@@ -35,8 +35,6 @@ public class Torrent {
         infoHashBytes = TorrentUtils.calculateHash(info_dict);
         infoHashHex = TorrentUtils.calculateHexFromHash(infoHashBytes);
         peerId = infoHashHex;
-        //System.out.println(infoHashHex);
-        //System.out.println("45b3d693cff285975f622acaeb75c5626acaff6f");
     }
 
     public String getAnnounceURL() {
