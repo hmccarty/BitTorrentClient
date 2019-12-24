@@ -24,7 +24,8 @@ public class HttpRequestBuilder {
                   .addParameter("uploaded", Long.toString(torrent.getTotalUploaded()))
                   .addParameter("downloaded", Long.toString(torrent.getTotalDownloaded()))
                   .addParameter("left", Long.toString(torrent.getLeftToDownload()))
-                  .addParameter("compact", Integer.toString(torrent.getCompact()))
+                  //.addParameter("compact", Integer.toString(torrent.getCompact()))
+                  .addParameter("no_peer_id", Integer.toString(1))
                   .addParameter("event", torrent.getEvent());
         return urlBuilder.getURL();
     }

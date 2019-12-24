@@ -8,7 +8,8 @@ public class Client {
         try {
             Torrent torrent = new Torrent(new File( "C:\\Users\\harri\\Downloads\\kubuntu-16.04.6-desktop-amd64.iso.torrent"));
             Tracker tracker = new Tracker();
-            tracker.processRequest(HttpRequestBuilder.create(torrent));
+            PeerManager peerManager = new PeerManager(torrent, tracker.processRequest(HttpRequestBuilder.create(torrent)));
+            peerManager.connect();
         } catch (IOException | NoAvailablePortException e) {
             e.printStackTrace();
         }

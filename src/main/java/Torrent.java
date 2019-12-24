@@ -2,6 +2,7 @@ import com.dampcake.bencode.Bencode;
 import com.dampcake.bencode.Type;
 import org.apache.commons.io.IOUtils;
 import java.io.*;
+import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 
@@ -29,11 +30,11 @@ public class Torrent {
         totalDownloaded = 0;
         totalUploaded = 0;
         event = "started";
-        compact = 1;
+        compact = 0;
 
         byte[] info_dict = bencode.encode((HashMap) decodedBencode.get("info"));
         infoHashBytes = TorrentUtils.calculateHash(info_dict);
-        infoHashHex = TorrentUtils.calculateHexFromHash(infoHashBytes);
+        infoHashHex = TorrentUtils.calculateHexFromBytes(infoHashBytes);
         peerId = infoHashHex;
     }
 

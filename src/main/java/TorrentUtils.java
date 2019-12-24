@@ -8,17 +8,17 @@ public class TorrentUtils {
         return DigestUtils.sha(data);
     }
 
-    public static String calculateHexFromHash(byte[] hash) {
-        char[] hexChars = new char[hash.length * 2];
-        for (int j = 0; j < hash.length; j++) {
-            int v = hash[j] & 0xFF;
+    public static String calculateHexFromBytes(byte[] arr) {
+        char[] hexChars = new char[arr.length * 2];
+        for (int j = 0; j <arr.length; j++) {
+            int v = arr[j] & 0xFF;
             hexChars[j * 2] = HEX_SYMBOLS[v >>> 4];
             hexChars[j * 2 + 1] = HEX_SYMBOLS[v & 0x0F];
         }
         return new String(hexChars);
     }
 
-    public static String encodeHash (String hash) {
+    public static String encodeHash(String hash) {
         String encodedHash = "";
         for (int i = 0; i < hash.length(); i = i + 2) {
             String hexValue = hash.substring(i, i + 2);
@@ -31,5 +31,9 @@ public class TorrentUtils {
             }
         }
         return encodedHash;
+    }
+
+    public static int byteArrayToInt(byte[] data) {
+        return 0x00 << 24 | 0x00 << 16 | (data[0] & 0xff) << 8 | (data[1] & 0xff);
     }
 }
