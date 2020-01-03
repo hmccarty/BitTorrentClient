@@ -42,6 +42,8 @@ public class Torrent {
         return announceURL;
     }
 
+    public byte[] getInfoHashBytes() { return infoHashBytes; }
+
     public String getInfoHashHex() {
         return infoHashHex;
     }

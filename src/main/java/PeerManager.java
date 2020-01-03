@@ -17,9 +17,14 @@ public class PeerManager {
         for (HashMap<String, Object> peer : peerList) {
             InetAddress ip = InetAddress.getByName((String) peer.get("ip"));
             int port = ((Long) peer.get("port")).intValue();
-            PeerHandler peerHandler = new PeerHandler(torrent, ip, port);
-            Thread thread = new Thread(peerHandler);
-            thread.start();
+            try {
+                PeerHandler peerHandler = new PeerHandler(torrent, ip, port);
+                Thread thread = new Thread(peerHandler);
+                thread.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            break;
         }
     }
 }
